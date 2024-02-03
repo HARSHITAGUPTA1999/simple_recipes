@@ -1,23 +1,18 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
+import Homepage from "./Components/Homepage";
+
+//implememtning light and dark mode
 
 function App() {
+  const [isDarkMode, setIsDarkMode] = useState(false);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className={`container ${isDarkMode ? 'bg-dark' : 'bg-light'}`}>
+      <div className="btn-group mt-3 gap-2" role="group">
+        <button type="button" className="btn btn-primary" onClick={()=>setIsDarkMode((prev)=>!prev)}>
+          SWITCH TO {isDarkMode ? 'LIGHT MODE' : 'DARK MODE'}
+        </button>
+      </div>
+      <Homepage darkMode={isDarkMode} />
     </div>
   );
 }
