@@ -1,6 +1,10 @@
 import React from "react";
+import Ingredient from "./Ingredient";
+import useTheme from "../Contexts/themeContext";
 
-function RecipeIngredients({darkMode}) {
+function RecipeIngredients() {
+
+
   const ingredients = [
     "Eggs - 2",
     "Salt - as per taste",
@@ -8,6 +12,9 @@ function RecipeIngredients({darkMode}) {
     "Chopped Onions",
     "Butter/Oil",
   ];
+
+  const {user,darkMode} = useTheme();
+
   return (
     <div
       className={`card text-start ${darkMode ? 'bg-dark' : 'bg-light'}`}
@@ -16,7 +23,7 @@ function RecipeIngredients({darkMode}) {
       <h5 className="card-title">Ingredients</h5>
       <ul className="list">
         {ingredients.map((item) => {
-          return <li className="list-item">{item}</li>;
+          return <Ingredient key={item} ingredient={item}/>
         })}
       </ul>
     </div>

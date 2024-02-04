@@ -1,6 +1,9 @@
 import React from "react";
+import useTheme from "../Contexts/themeContext";
 // import styles from './RecipeIntro.module.css'
-function RecipeIntro({darkMode}) {
+function RecipeIntro() {
+
+  const {darkMode} = useTheme();
   return (
     // <div className={styles.main}>
     <div className={`card ${darkMode ? 'bg-dark' : 'bg-light'}` } style={{ width: "40%" , margin: 'auto' }}>
